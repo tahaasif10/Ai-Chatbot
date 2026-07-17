@@ -1,0 +1,537 @@
+/* ── Page: same atmosphere as .mainChat ─────────────────────────── */
+
+.page {
+  --bg-grid-size: 56px;
+  --bg-grid-line: rgba(155, 175, 210, 0.065);
+  align-items: center;
+  background-color: #04050a;
+  color: #e2e8f0;
+  display: flex;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  isolation: isolate;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+  position: relative;
+}
+
+.page::before,
+.page::after {
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: fixed;
+  z-index: -1;
+}
+
+.page::before {
+  background:
+    radial-gradient(
+      ellipse 55% 130% at -6% 48%,
+      rgba(32, 58, 118, 0.52) 0%,
+      rgba(18, 32, 68, 0.22) 32%,
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 80% 60% at 100% 100%,
+      rgba(8, 12, 22, 0.9) 0%,
+      transparent 55%
+    ),
+    linear-gradient(108deg, #0a1228 0%, #05060c 38%, #030408 100%);
+}
+
+.page::after {
+  background-image:
+    linear-gradient(var(--bg-grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--bg-grid-line) 1px, transparent 1px);
+  background-size: var(--bg-grid-size) var(--bg-grid-size);
+  -webkit-mask-image: radial-gradient(
+    ellipse 105% 88% at 74% 66%,
+    #000 0%,
+    rgba(0, 0, 0, 0.75) 28%,
+    rgba(0, 0, 0, 0.2) 52%,
+    transparent 72%
+  );
+  mask-image: radial-gradient(
+    ellipse 105% 88% at 74% 66%,
+    #000 0%,
+    rgba(0, 0, 0, 0.75) 28%,
+    rgba(0, 0, 0, 0.2) 52%,
+    transparent 72%
+  );
+}
+
+/* ── Premium glass auth card ────────────────────────────────────── */
+
+.panel {
+  --cyan: #4facfe;
+  --blue: #2563eb;
+  backdrop-filter: blur(40px) saturate(180%);
+  -webkit-backdrop-filter: blur(40px) saturate(180%);
+  background: linear-gradient(
+    165deg,
+    rgba(12, 16, 30, 0.72) 0%,
+    rgba(8, 10, 20, 0.58) 55%,
+    rgba(6, 8, 16, 0.65) 100%
+  );
+  border: 1px solid rgba(79, 172, 254, 0.22);
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(79, 172, 254, 0.06) inset,
+    0 1px 0 rgba(255, 255, 255, 0.06) inset,
+    0 0 48px rgba(37, 99, 235, 0.12),
+    0 0 96px rgba(79, 172, 254, 0.08),
+    0 32px 80px rgba(0, 0, 0, 0.55);
+  font-family: var(--font-geist-sans), "Inter", -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  isolation: isolate;
+  max-width: 460px;
+  overflow: hidden;
+  padding: 40px 40px 36px;
+  position: relative;
+  width: 100%;
+}
+
+.panel::before {
+  background: linear-gradient(
+    180deg,
+    rgba(79, 172, 254, 0.14) 0%,
+    transparent 42%
+  );
+  content: "";
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+/* Ambient halo blending into page bg */
+.ambientGlow {
+  background: radial-gradient(
+    ellipse 90% 70% at 50% -10%,
+    rgba(79, 172, 254, 0.18) 0%,
+    rgba(37, 99, 235, 0.08) 40%,
+    transparent 72%
+  );
+  inset: -1px;
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+/* Floating interior glow orbs */
+.glowOrb1,
+.glowOrb2,
+.glowOrb3 {
+  border-radius: 50%;
+  filter: blur(48px);
+  pointer-events: none;
+  position: absolute;
+  z-index: 0;
+}
+
+.glowOrb1 {
+  animation: floatOrb1 9s ease-in-out infinite;
+  background: rgba(79, 172, 254, 0.14);
+  height: 140px;
+  left: -40px;
+  top: 18%;
+  width: 140px;
+}
+
+.glowOrb2 {
+  animation: floatOrb2 11s ease-in-out infinite;
+  background: rgba(37, 99, 235, 0.12);
+  height: 110px;
+  right: -30px;
+  top: 42%;
+  width: 110px;
+}
+
+.glowOrb3 {
+  animation: floatOrb3 13s ease-in-out infinite;
+  background: rgba(0, 242, 254, 0.08);
+  bottom: 12%;
+  height: 90px;
+  left: 38%;
+  width: 90px;
+}
+
+@keyframes floatOrb1 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(18px, -14px) scale(1.08);
+  }
+}
+
+@keyframes floatOrb2 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(-16px, 12px) scale(1.06);
+  }
+}
+
+@keyframes floatOrb3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(10px, -10px) scale(1.1);
+  }
+}
+
+/* ── Logo emblem ────────────────────────────────────────────────── */
+
+.logoSection {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.logoEmblem {
+  align-items: center;
+  display: flex;
+  height: 72px;
+  justify-content: center;
+  margin-bottom: 14px;
+  position: relative;
+  width: 72px;
+}
+
+.logoRing {
+  animation: pulseRing 4s ease-in-out infinite;
+  border: 1px solid rgba(79, 172, 254, 0.35);
+  border-radius: 50%;
+  box-shadow:
+    0 0 24px rgba(79, 172, 254, 0.2),
+    0 0 48px rgba(37, 99, 235, 0.1),
+    inset 0 0 20px rgba(79, 172, 254, 0.06);
+  inset: 0;
+  position: absolute;
+}
+
+.logoRing::after {
+  background: radial-gradient(
+    circle,
+    rgba(79, 172, 254, 0.15) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  content: "";
+  inset: -8px;
+  position: absolute;
+}
+
+@keyframes pulseRing {
+  0%,
+  100% {
+    box-shadow:
+      0 0 24px rgba(79, 172, 254, 0.2),
+      0 0 48px rgba(37, 99, 235, 0.1),
+      inset 0 0 20px rgba(79, 172, 254, 0.06);
+  }
+
+  50% {
+    box-shadow:
+      0 0 32px rgba(79, 172, 254, 0.32),
+      0 0 64px rgba(37, 99, 235, 0.16),
+      inset 0 0 24px rgba(79, 172, 254, 0.1);
+  }
+}
+
+.logoIcon {
+  border-radius: 50%;
+  height: 44px;
+  object-fit: cover;
+  position: relative;
+  width: 44px;
+  z-index: 1;
+}
+
+.brandLabel {
+  background: linear-gradient(135deg, #e8f4ff 0%, #94c8ff 55%, #4facfe 100%);
+  background-clip: text;
+  color: transparent;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.brandTagline {
+  color: rgba(155, 175, 210, 0.55);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+/* ── Header ─────────────────────────────────────────────────────── */
+
+.header {
+  margin-bottom: 28px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.title {
+  color: #f8fafc;
+  font-size: 1.65rem;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+.subtitle {
+  color: rgba(155, 175, 210, 0.72);
+  font-size: 0.92rem;
+  font-weight: 400;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Segmented mode switch ──────────────────────────────────────── */
+
+.modeTabs {
+  background: rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(79, 172, 254, 0.1);
+  border-radius: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 28px;
+  padding: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.modeIndicator {
+  background: linear-gradient(
+    135deg,
+    rgba(79, 172, 254, 0.22) 0%,
+    rgba(37, 99, 235, 0.18) 100%
+  );
+  border: 1px solid rgba(79, 172, 254, 0.28);
+  border-radius: 10px;
+  box-shadow:
+    0 2px 12px rgba(79, 172, 254, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  inset: 0;
+  position: absolute;
+  z-index: 0;
+}
+
+.modeTab {
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  color: rgba(155, 175, 210, 0.65);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 11px 14px;
+  position: relative;
+  transition: color 0.25s ease;
+  z-index: 1;
+}
+
+.modeTabLabel {
+  position: relative;
+  z-index: 1;
+}
+
+.modeTab:hover {
+  color: #cbd5e1;
+}
+
+.modeTabActive {
+  color: #f0f7ff;
+}
+
+/* ── Form ───────────────────────────────────────────────────────── */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.fieldLabel {
+  color: rgba(174, 184, 202, 0.85);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.field input {
+  background: rgba(6, 8, 16, 0.55);
+  border: 1px solid rgba(79, 172, 254, 0.12);
+  border-radius: 12px;
+  color: #f1f5f9;
+  font: inherit;
+  font-size: 0.94rem;
+  font-weight: 400;
+  outline: none;
+  padding: 14px 16px;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background-color 0.25s ease;
+}
+
+.field input::placeholder {
+  color: rgba(100, 116, 139, 0.65);
+}
+
+.field input:hover {
+  border-color: rgba(79, 172, 254, 0.22);
+}
+
+.field input:focus {
+  background: rgba(6, 8, 16, 0.75);
+  border-color: rgba(79, 172, 254, 0.45);
+  box-shadow:
+    0 0 0 3px rgba(79, 172, 254, 0.1),
+    0 0 20px rgba(79, 172, 254, 0.12),
+    inset 0 0 12px rgba(79, 172, 254, 0.04);
+}
+
+.error {
+  background: rgba(42, 24, 32, 0.7);
+  border: 1px solid rgba(245, 87, 108, 0.35);
+  border-radius: 12px;
+  color: #ffd9df;
+  font-size: 0.86rem;
+  line-height: 1.45;
+  margin: 0;
+  overflow: hidden;
+  padding: 12px 14px;
+}
+
+/* ── Primary CTA ────────────────────────────────────────────────── */
+
+.submitBtn {
+  background: linear-gradient(135deg, #4facfe 0%, #2563eb 100%);
+  border: none;
+  border-radius: 12px;
+  color: #f8fafc;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.94rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-top: 4px;
+  overflow: hidden;
+  padding: 14px 18px;
+  position: relative;
+  transition: box-shadow 0.3s ease;
+}
+
+.submitBtn:hover:not(:disabled) {
+  box-shadow:
+    0 4px 24px rgba(79, 172, 254, 0.35),
+    0 8px 40px rgba(37, 99, 235, 0.2);
+}
+
+.submitBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.submitBtnGlow {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.18) 0%,
+    transparent 50%
+  );
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.submitBtnText {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Footer ─────────────────────────────────────────────────────── */
+
+.footer {
+  border-top: 1px solid rgba(79, 172, 254, 0.08);
+  margin-top: 28px;
+  padding-top: 22px;
+  position: relative;
+  text-align: center;
+  z-index: 1;
+}
+
+.footerText {
+  color: rgba(139, 146, 165, 0.85);
+  font-size: 0.86rem;
+  margin: 0;
+}
+
+.switchBtn {
+  background: none;
+  border: none;
+  color: #4facfe;
+  cursor: pointer;
+  font: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  padding: 0;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.switchBtn:hover {
+  color: #7ec4ff;
+  text-shadow: 0 0 12px rgba(79, 172, 254, 0.35);
+}
+
+@media (max-width: 480px) {
+  .panel {
+    padding: 24px 20px 20px;
+    border-radius: 20px;
+  }
+  .title {
+    font-size: 1.35rem;
+  }
+  .subtitle {
+    font-size: 0.85rem;
+  }
+  .logoEmblem {
+    height: 60px;
+    width: 60px;
+  }
+  .logoIcon {
+    height: 36px;
+    width: 36px;
+  }
+}
+
