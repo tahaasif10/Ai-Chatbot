@@ -1,0 +1,342 @@
+.toolsRow {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.toolBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #16181d;
+  border: 1px solid #2d313a;
+  border-radius: 8px;
+  color: #9fb4d4;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.76rem;
+  font-weight: 600;
+  padding: 6px 10px;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.toolBtn:hover {
+  background-color: #1e2128;
+  border-color: #4facfe;
+  color: #cfe6ff;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(4, 5, 10, 0.7);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  z-index: 100;
+  animation: fadeIn 0.15s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  width: 100%;
+  max-width: 560px;
+  max-height: 84vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #14161b;
+  border: 1px solid #2d313a;
+  border-radius: 16px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid #23262e;
+  flex-shrink: 0;
+}
+
+.modalTitle {
+  color: #f1f5f9;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+}
+
+.modalSubtitle {
+  color: #7c8494;
+  font-size: 0.8rem;
+  margin: 0;
+  max-width: 380px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.closeBtn {
+  background: transparent;
+  border: none;
+  color: #7c8494;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.closeBtn:hover {
+  background-color: #1e2128;
+  color: #ececec;
+}
+
+.modalBody {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding: 40px 20px;
+  color: #9aa4b8;
+  font-size: 0.9rem;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #2d313a;
+  border-top-color: #4facfe;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.errorState {
+  color: #ffd9df;
+  background-color: #2a1820;
+  border: 1px solid #f5576c66;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.emptyState {
+  color: #7c8494;
+  font-size: 0.88rem;
+  text-align: center;
+  padding: 24px;
+}
+
+.deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.deckHeader {
+  color: #7c8494;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.flashcard {
+  width: 100%;
+  max-width: 420px;
+  height: 220px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  perspective: 1200px;
+  padding: 0;
+}
+
+.flashcardInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-style: preserve-3d;
+}
+
+.flashcardFlipped .flashcardInner {
+  transform: rotateY(180deg);
+}
+
+.flashcardFace {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  background: linear-gradient(160deg, #1e2128 0%, #171921 100%);
+  border: 1px solid #2d313a;
+  border-radius: 14px;
+  backface-visibility: hidden;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.flashcardFace p {
+  color: #e2e8f0;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.flashcardFaceBack {
+  transform: rotateY(180deg);
+  background: linear-gradient(160deg, #16233a 0%, #0f1622 100%);
+  border-color: #4facfe55;
+}
+
+.flashcardLabel {
+  color: #4facfe;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.tapHint {
+  color: #5a6272;
+  font-size: 0.76rem;
+  margin: 0;
+}
+
+.deckNav {
+  display: flex;
+  gap: 10px;
+}
+
+.navBtn {
+  background-color: #1e2128;
+  border: 1px solid #2d313a;
+  border-radius: 8px;
+  color: #cbd5e1;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.navBtn:hover:not(:disabled) {
+  background-color: #262a33;
+  border-color: #4facfe;
+}
+
+.navBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.4;
+}
+
+.quizList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quizCard {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.quizQuestion {
+  color: #f1f5f9;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.quizOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.quizOption {
+  text-align: left;
+  background-color: #1a1c22;
+  border: 1px solid #2d313a;
+  border-radius: 8px;
+  color: #cbd5e1;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.87rem;
+  padding: 10px 12px;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.quizOption:hover:not(:disabled) {
+  background-color: #21242c;
+  border-color: #4facfe;
+}
+
+.quizOption:disabled {
+  cursor: default;
+}
+
+.quizOptionCorrect {
+  background-color: #132a22;
+  border-color: #2dd4bf;
+  color: #a7f3d9;
+}
+
+.quizOptionWrong {
+  background-color: #2a1820;
+  border-color: #f5576c;
+  color: #ffd9df;
+}
+
+.quizExplanation {
+  color: #9aa4b8;
+  font-size: 0.83rem;
+  line-height: 1.5;
+  margin: 0;
+  padding: 10px 12px;
+  background-color: #14161b;
+  border-left: 3px solid #4facfe;
+  border-radius: 4px;
+}
+
+.summaryContent {
+  color: #cbd5e1;
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 480px) {
+  .modal { max-height: 90vh; }
+  .flashcard { height: 200px; }
+  .overlay { padding: 12px; }
+}

@@ -1,0 +1,9 @@
+fastapi
+uvicorn
+python-dotenv
+supabase
+groq
+pypdf
+python-docx
+python-multipart
+python-jose[cryptography]
