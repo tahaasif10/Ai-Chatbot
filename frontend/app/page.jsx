@@ -175,7 +175,7 @@ export default function Home() {
               <line x1="3" y1="18" x2="21" y2="18" />
             </svg>
           </button>
-          <span className={styles.mobileTitle}>AI Study Assistant</span>
+          <span className={styles.mobileTitle}>Ai-Study</span>
           <button
             type="button"
             className={styles.mobileNewChatBtn}

@@ -201,7 +201,7 @@ export default function Sidebar({
     >
       <div className={styles.sidebarHeader}>
         <div className={styles.brand}>
-          <span className={styles.brandText}>AI Study Assistant</span>
+          <span className={styles.brandText}>Ai-Study</span>
         </div>
         <button
           type="button"
